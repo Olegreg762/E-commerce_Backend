@@ -14,7 +14,7 @@ router.get('/', async (req, res) => {
         {model: Tag}
       ]
     });
-  res.status(200).json(products)
+    res.status(200).json(products)
   }catch (err){
     res.status(400).json(err)
   }
@@ -31,7 +31,7 @@ router.get('/:id', async (req, res) => {
         {model: Tag}
       ]
     });
-  res.status(200).json(product_id)
+    res.status(200).json(product_id)
   }catch (err){
     res.status(400).json(err)
   }
@@ -116,7 +116,12 @@ router.put('/:id', (req, res) => {
 router.delete('/:id', async (req, res) => {
   // delete one product by its `id` value
   try{
-    const product_delete = await
+    const product_delete = await Product.destroy({
+      where:{
+        id: req.params.id
+      }
+    });
+    res.status(200).json({message: `Product id:${product_delete} deleted`})
   }catch (err){
     res.status(400).json(err)
   }
