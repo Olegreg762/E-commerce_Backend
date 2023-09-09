@@ -6,6 +6,7 @@ const seedProductTags = require('./product-tag-seeds');
 const sequelize = require('../config/connection');
 
 const seedAll = async () => {
+  // Set force to false so that databse will not be reseeded upon server start
   await sequelize.sync({ force: false });
   console.log('\n----- DATABASE SYNCED -----\n');
   await seedCategories();
@@ -20,5 +21,5 @@ const seedAll = async () => {
   await seedProductTags();
   console.log('\n----- PRODUCT TAGS SEEDED -----\n');
 };
-
+// Export the seedAll function
 module.exports = seedAll;

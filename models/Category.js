@@ -1,11 +1,13 @@
+// Import modules
 const { Model, DataTypes } = require('sequelize');
 
 const sequelize = require('../config/connection.js');
-
+// Intialize Caetgory model by extengin Model
 class Category extends Model {}
 
-
+// Set up fields and rules for model
 Category.init(
+
   {
     id: {
       type: DataTypes.INTEGER,

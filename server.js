@@ -10,7 +10,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use(routes);
-
+// sync sequelize models to the database, then turn on the server
+// will seed the database when server is started
 const seed_start_server = async () =>{
   try {
     await seedAll();
@@ -22,4 +23,4 @@ const seed_start_server = async () =>{
   }
 };
 seed_start_server();
-// sync sequelize models to the database, then turn on the server
+
